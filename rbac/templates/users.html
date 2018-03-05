@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>users</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <style>
+        .container {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+
+    <div class="row">
+        <a href="/rbac/user/add/" class="btn btn-xs btn-info">添加</a>
+        <table class="table-bordered table-hover col-md-8 col-md-offset-2">
+            <td>ID</td>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>操作</td>
+            </tr>
+            {% for user in user_list %}
+                <tr>
+                    <td>{{ user.pk }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.password }}</td>
+                    <td>
+                        <a href="/rbac/user/edit/{{ user.pk }}/" class="btn btn-xs btn-info">编辑</a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>
